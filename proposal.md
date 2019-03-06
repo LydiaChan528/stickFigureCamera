@@ -12,8 +12,24 @@ outline, but it may help you focus your project.
 * Goals for next week
 * References and resources used
 
-Keep the proposal short and to the point.
+#Stick Figure Camera Thingy 
 
-We suggest you try to get all the major hardware components working by the
-first week. That will leave the following week for putting the components
-together into a working system.
+Team Members: 
+Lydia Chan
+Andy Khuu
+
+Description: 
+
+Hardware Required: 
+*Adafruit AMG8833 IR Thermal Camera Breakout
+*Monitor
+*HDMI Cables
+
+Funds Requested: $40(hard cold ca$h)
+
+Goals for Next Week:
+
+Timeline:
+
+References and Resources Used:
+
