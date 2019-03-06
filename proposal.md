@@ -12,24 +12,26 @@ outline, but it may help you focus your project.
 * Goals for next week
 * References and resources used
 
-#Stick Figure Camera Thingy 
+# Stick Figure Camera Thingy 
 
-Team Members: 
+## Team Members: 
 Lydia Chan
 Andy Khuu
 
-Description: 
+## Description: 
 
-Hardware Required: 
-*Adafruit AMG8833 IR Thermal Camera Breakout
-*Monitor
-*HDMI Cables
+## Hardware Required: 
+* Adafruit AMG8833 IR Thermal Camera Breakout
+* Monitor
+* HDMI Cables
 
-Funds Requested: $40(hard cold ca$h)
+## Funds Requested: $40(hard cold ca$h)
 
-Goals for Next Week:
+## Major task breakdown and who is responsible for each task
 
-Timeline:
+## Goals for Next Week:
 
-References and Resources Used:
+## Timeline:
+
+## References and Resources Used:
 
