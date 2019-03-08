@@ -2,6 +2,7 @@
 #include "uart.h"
 #include "i2c.h"
 #include "gl.h"
+#include "malloc.h"
 
  /*Set up the necessary functions to test and display the basic input that 
   we get from the infrared thermal sensor(Let's move these functions into it's
@@ -23,6 +24,9 @@ void main(void)
   uart_init();
   printf("Hello, world!\n");
   gl_init(50,50,0);
+  char * infraredData = malloc(64);
+
+  //Default address is 0x69
 
  
   
