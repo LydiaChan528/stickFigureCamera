@@ -15,37 +15,35 @@ outline, but it may help you focus your project.
 # Stick Figure Camera Thingy 
 
 ## Team Members: 
-Lydia Chan
-Andy Khuu
+ * Lydia Chan
+ * Andy Khuu
 
 ## Description: 
 Stick Figure Camera Thingy is a project based on  love for stick figures and our desire to create something which is fun and interactive. The project will utilize a thermal camera from Adafruitour in order to track the major limbs of the body which through heuristic calculations will be able to draw the person in frame as a stick figure! The stick figure will act as the player who will go interact with the project through a variety of features such as picking up and dodging balls from the sky! More features to accompany the Stick Figure Camera Thingy Project to come later on. (Human Space Invaders, PacMan, etc.) 
-
 
 ## Hardware Required: 
 * Adafruit AMG8833 IR Thermal Camera Breakout
 * Monitor
 * HDMI Cables
+* Raspberry Pi, Breadboard, and Jumper Cables
 
 ## Funds Requested
 * $40(hard cold ca$h)
 
-
 ## Major task breakdown and who is responsible for each task
-Major task breakdown 
-- [ ] Sensor Interfacing
-        - Utilize I2C protocol to interface with camera
-        - Visualize the values on the monitor
-        - Process and interpolate the data values
-- [ ] Graphics Displaying
-        - Optimize writing graphics data to monitor to be fast and efficient
-        - Handle drawing lines and circles
-- [ ] Player Handling
-        - properties 
-- [ ] Game _ general layout 
-        - game elements (balls) and integration
-        - Collision detection
-
+- [ ] Sensor Interfacing - Andy <br/>
+  * Utilize I2C protocol to interface with camera <br/>
+  * Process and interpolate the data values <br/>
+- [ ] Graphics Displaying - Lydia <br/>
+  * Optimize writing graphics data to monitor to be fast and efficient <br/>
+  * Handle drawing nice lines, arcs, and circles <br/>
+- [ ] Player Handler - Andy and Lydia <br/>
+  * Uses sensor values to decide location and sizes of stick figure elements  <br/>
+  * Implement representation of stick figure  <br/>
+- [ ] Game - Andy and Lydia <br/> 
+  * Integrate game elements (balls) <br/>
+  * Collision detection <br/>
+  * Implement interaction and motion of game elements <br/>
 
 ## Goals for Next Week:
 3/7: Plan out foundational outline of functions and classses <br/>
