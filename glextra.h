@@ -6,11 +6,10 @@
 /*
 
  */
-void draw_circle(int x, int y, int radius){
-
-
+void drawCircle(int x_center, int y_center, int radius) {
+  /* To be implemented in glextra.c
+   */
 }
-
 
 /*
 
