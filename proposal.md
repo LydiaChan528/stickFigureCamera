@@ -32,7 +32,19 @@ Stick Figure Camera Thingy is a project based on  love for stick figures and our
 
 
 ## Major task breakdown and who is responsible for each task
-
+Major task breakdown 
+- [ ] Sensor Interfacing
+        - Utilize I2C protocol to interface with camera
+        - Visualize the values on the monitor
+        - Process and interpolate the data values
+- [ ] Graphics Displaying
+        - Optimize writing graphics data to monitor to be fast and efficient
+        - Handle drawing lines and circles
+- [ ] Player Handling
+        - properties 
+- [ ] Game _ general layout 
+        - game elements (balls) and integration
+        - Collision detection
 
 
 ## Goals for Next Week:
@@ -50,7 +62,7 @@ Stick Figure Camera Thingy is a project based on  love for stick figures and our
 3/22: DONE :) <br/>
 
 ## References and Resources Used:
- * Bresenham's Circle Algorithm
- * Adafruit documentation
- * CS107E I2C Support Code
+ * Bresenham's Circle Algorithm<br/>
+ * Adafruit documentation<br/>
+ * CS107E I2C Support Code<br/>
 
