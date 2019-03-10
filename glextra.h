@@ -11,14 +11,5 @@ void drawCircle(int x_center, int y_center, int radius) {
    */
 }
 
-/*
 
- */
-void hasCollided(){
-
-
-}
-
-
-void 
 #endif
