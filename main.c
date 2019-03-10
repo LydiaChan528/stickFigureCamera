@@ -17,7 +17,15 @@ void main(void)
   uart_init();
   printf("Hello, world!\n");
   gl_init(50,50,0);
-  char * infraredData = malloc(64);
+  //i2c_init();
+
+  char* infraredData = malloc(64);
+  *infraredData = 'c';
+  getDataFromInfraredSensor(infraredData);
+  for(int i = 0; i < 64; i++){
+    printf("%c",*infraredData);
+    infraredData++;
+  }
 
   //Default address is 0x69
 
