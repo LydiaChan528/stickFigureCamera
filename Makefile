@@ -5,14 +5,16 @@ CFLAGS  = -I$(CS107E)/include -g -Wall -Wpointer-arith
 CFLAGS += -Og -std=c99 -ffreestanding
 CFLAGS += -mapcs-frame -fno-omit-frame-pointer -mpoke-function-name
 LDFLAGS = -nostdlib -T memmap -L. -L$(CS107E)/lib
-LDLIBS  = -lmypi -lpi -lgcc
+LDLIBS  = -lpiextra -lpi -lgcc
 
-all : $(NAME).bin
+MODULES = i2c.o
+
+all : $(NAME).bin $(MODULES)
 
 %.bin: %.elf
 	arm-none-eabi-objcopy $< -O binary $@
 
-%.elf: %.o $(OBJECTS) start.o cstart.o
+%.elf: %.o $(MODULES) start.o cstart.o
 	arm-none-eabi-gcc $(LDFLAGS) $^ $(LDLIBS) -o $@
 
 %.o: %.c
