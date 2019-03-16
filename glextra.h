@@ -39,6 +39,6 @@ void drawCircle(int xCenter, int yCenter, int radius);
 /*
 
  */
-void projectInfraredDataToMonitor(short* infraredData, int size);
+void projectInfraredDataToMonitor(short* infraredData, int rowSize);
 
 #endif

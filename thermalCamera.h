@@ -12,7 +12,9 @@ void getDataFromInfraredSensor(short* data);
 /*Interpolate the 8x8 array that we get from the infrared data in order to 
 faciliate more precise calculations
  */
-void interpolateSensorData();
+void interpolateSensorData2(short* irData, short* ipData, int originalRowSize, int newRowSize);
 
-void printInfraredData(short *infraredData, int size);
+void interpolateSensorData(short* irData, short* ipData, int originalRowSize, int newRowSize);
+
+void printInfraredData(short *infraredData, int rowSize);
 #endif
