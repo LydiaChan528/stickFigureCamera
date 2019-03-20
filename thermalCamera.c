@@ -1,6 +1,8 @@
 #include "thermalCamera.h"
 #include "i2c.h"
 #include "strings.h"
+#include "printf.h"
+#include "malloc.h"
 #include "math.h"
 
 static short bilinearInterpolation(short q11, short q12, short q21, short q22, double x1, double x2, double y1, double y2, double x, double y);
