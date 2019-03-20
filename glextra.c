@@ -6,45 +6,36 @@
 /* Helper function to drawCircle(). This function draws in all 8 octaves of a 
 circle derived from Bresenham's Circle Algorithm.
  */
-static void drawOctave(int xc, int yc, int x, int y, color_t c) 
-{ 
-    gl_draw_pixel(xc+x, yc+y, c); 
-    gl_draw_pixel(xc-x, yc+y, c); 
-    gl_draw_pixel(xc+x, yc-y, c); 
-    gl_draw_pixel(xc-x, yc-y, c); 
-    gl_draw_pixel(xc+y, yc+x, c); 
-    gl_draw_pixel(xc-y, yc+x, c); 
-    gl_draw_pixel(xc+y, yc-x, c); 
-    gl_draw_pixel(xc-y, yc-x, c); 
-} 
-  
-// Function for circle-generation 
-// using Bresenham's algorithm 
-void drawCircle(int xCenter, int yCenter, int radius) 
-{ 
-    int x = 0, y = radius; 
-    int d = 3 - 2 * radius; 
-    drawOctave(xCenter, yCenter, x, y, GL_BLUE); 
-    while (y >= x) 
-    { 
-      // for each pixel we will 
-      // draw all eight pixels 
-      x++; 
-      // check for decision parameter 
-      // and correspondingly  
-      // update d, x, y 
-      if (d > 0) 
-        { 
-	  y--;  
-	  d = d + 4 * (x - y) + 10; 
-        } 
-      else{
-	d = d + 4 * x + 6; 
-	drawOctave(xCenter, yCenter, x, y,GL_BLUE); 
-        timer_delay_us(50); 
-      }
-    } 
+static void drawOuterPoints(int xc, int yc, int x, int y, color_t color) {
+  gl_draw_pixel(xc+x, yc+y, color);
+  gl_draw_pixel(xc-x, yc+y, color);
+  gl_draw_pixel(xc+x, yc-y, color);
+  gl_draw_pixel(xc-x, yc-y, color);
+  gl_draw_pixel(xc+y, yc+x, color);
+  gl_draw_pixel(xc-y, yc+x, color);
+  gl_draw_pixel(xc+y, yc-x, color);
+  gl_draw_pixel(xc-y, yc-x, color);
 }
+
+/*Draw circles using Bresenham's algorithm*/
+void drawCircle(int xCenter, int yCenter, int radius, color_t c) {
+  int x = 0;
+  int y = radius;
+  int decision = 3 - (2*radius);
+  drawOuterPoints(xCenter, yCenter, x, y, c);
+
+  while (y > x) {
+    x++;
+    if (decision > 0) {
+      y--;
+      decision += (4*(x-y) + 10);
+    } else {
+      decision += ((4*x) + 6);
+    }
+    drawOuterPoints(xCenter, yCenter, x, y, c);
+  } 
+}
+
 
 /*
 
