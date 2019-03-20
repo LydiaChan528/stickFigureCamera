@@ -4,24 +4,27 @@
 #include "gl.h"
 #include "thermalCamera.h"
 
+struct Point{
+  int x;
+  int y;
+};
+
 struct Line{
-  int x1;
-  int y1;
-  int x2;
-  int y2;
+  struct Point one;
+  struct Point two;
 };
 
 struct Circle{
-  int xCenter;
-  int yCenter;
+  struct Point center;
   int radius;
 };
 
-/*
-
- */
-void drawStickFigure();
-  /* To be implemented in glextra.c */
+struct Rectangle{
+  struct Point one;
+  struct Point two;
+  struct Point three;
+  struct Point four;
+};
 
 /*
 

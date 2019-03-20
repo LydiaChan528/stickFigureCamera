@@ -1,18 +1,26 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef STICKFIGURE_H
+#define STICKFIGURE_H
 
- /*Draw the stick figure to the screen.
-  */
-void drawStickFigure() {
+#include "glextra.h"
 
-}
+struct Player{
+  struct Circle head;
+  struct Line torso;
+  struct Line leftArm;
+  struct Line rightArm;
+  struct Line leftLeg;
+  struct Line rightLeg;
+};
+
+struct Player player;
+
+void drawStickFigure();
+  //To be implemented in stickFigure.c
 
  /*Implementation to update stick figure:
    1) interrupt handler with interrupt as change in motion
    2) called like a "console_print" to refresh stick figure
   */
-void updateStickFigure() {
-	
-}
+void updateStickFigure();
 
 #endif

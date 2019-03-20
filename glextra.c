@@ -48,10 +48,6 @@ void drawCircle(int xCenter, int yCenter, int radius)
 /*
 
  */
-void drawStickFigure(){
-  /* To be implemented in glextra.c */
-}
-
 struct Circle* calculateHead(const char* data){
   struct Circle* head;
   return head;

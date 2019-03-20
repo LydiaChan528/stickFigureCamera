@@ -1,5 +1,5 @@
 #include "glextra.h"
-#include "player.h"
+#include "stickFigure.h"
 
 void drawStickFigure() {
 
