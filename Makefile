@@ -5,7 +5,7 @@ CFLAGS  = -I$(CS107E)/include -g -Wall -Wpointer-arith
 CFLAGS += -Og -std=c99 -ffreestanding
 CFLAGS += -mapcs-frame -fno-omit-frame-pointer -mpoke-function-name
 LDFLAGS = -nostdlib -T memmap -L. -L$(CS107E)/lib
-LDLIBS  = -lpiextra -lpi -lgcc
+LDLIBS  = -lm -lpiextra -lpi -lgcc
 
 MODULES = thermalCamera.o glextra.o stickFigure.o game.o
 

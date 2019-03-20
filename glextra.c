@@ -1,6 +1,7 @@
 #include "glextra.h"
 #include "gl.h"
 #include "timer.h"
+#include "math.h"
 
 /* Helper function to drawCircle(). This function draws in all 8 octaves of a 
 circle derived from Bresenham's Circle Algorithm.
