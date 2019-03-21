@@ -63,6 +63,7 @@ void setGamePieces(){
     int randomBall = (rand() % (gl_get_width() + 1));
     balls[i].center.x = randomBall;
     balls[i].center.y = 0; 
+    balls[i].radius = 5;
   }
 }
 
@@ -79,10 +80,8 @@ void updateGamePieces(){
 void drawGamePieces(){
   //Draw balls 
   for(int i = 0; i < 3; i++){
-    drawCircle(balls[i].center.x,balls[i].center.y,balls[i].radius, GL_BLACK);
+    drawCircle(balls[i], GL_BLACK);
   }
-  gl_swap_buffer();
-  gl_clear(GL_WHITE);
 }
 
 int hasCollided(){
@@ -110,6 +109,7 @@ int hasRectangleCollided(struct Rectangle r1, struct Rectangle r2){
 
 void gameOver(){
   gl_clear(GL_BLACK);
-  gl_draw_string(gl_get_width()/2,gl_get_height()/2,"GAME OVER", GL_BLUE);
+  gl_draw_string(gl_get_width()/3,gl_get_height()/3,"GAME", GL_RED);
+  gl_draw_string(gl_get_width()/3,gl_get_height()/3+ gl_get_height()/3,"OVER", GL_RED);
   gl_swap_buffer();
 }
