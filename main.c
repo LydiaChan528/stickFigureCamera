@@ -26,12 +26,12 @@ void main(void)
 
   //storage for infraredData
   short* infraredData = malloc(sizeof(short)*64);
- 
   
-
+  // setGamePieces();
   /*
   //This is the janky working implementation to get data and interpolate it
   while(1){
+    //[GET DATA + INTERPOLATE]
     getDataFromInfraredSensor(infraredData);
     short* interpolatedData15 = malloc(sizeof(short)*15*15);
     interpolateSensorData(infraredData,interpolatedData15,8,15);
@@ -39,10 +39,14 @@ void main(void)
     short* interpolatedData29 = malloc(sizeof(short)*29*29);
     interpolateSensorData(interpolatedData15,interpolatedData29,15,29);
 
-    // printInfraredData(infraredData,8);
-    // printInfraredData(interpolatedData15,15);
-    // printInfraredData(interpolatedData29,29);
-    // projectInfraredDataToMonitor(interpolatedData29,29);
+    //[STICKFIGURE]
+    //Calculate parts of stickFigure
+    //Draw Stick Figure
+    
+    //[OBSTACLE]
+    // drawGamePieces();
+    // updateGamePieces();
+    // updateObstacleBounds();
 
     // // [GRAPHICS] Test calculate and draw head
     // struct Circle* head = calculateHead(interpolatedData29, 29); 
@@ -79,7 +83,7 @@ void main(void)
   */
 
   //[GAME] sucessfully tested beginning implementation of balls falling
-  setGamePieces();
+ 
   while(1){
     drawGamePieces();
     updateGamePieces();
@@ -87,14 +91,20 @@ void main(void)
     struct Line tester;
     tester.one.x = gl_get_width()/2;
     tester.one.y = gl_get_height()-5;
-    tester.two.x = gl_get_width() + 6;
+    tester.two.x = gl_get_width()/2 + 6;
     tester.two.y = gl_get_height()-5;
     gl_draw_rect(gl_get_width()/2,gl_get_height()-6,6,2,GL_BLUE);
+    int youLost = 0;
     for(int i = 0; i < 3; i++){
       if(hasRectangleCollided(calculateBoundsForRect(tester),obstacleBounds[i])){
-	printf("YOU LOST");
+        gameOver();
+	youLost = 1;
+	break;
       }
       //gl_draw_rect(obstacleBounds[i].two.x,obstacleBounds[i].two.y,1,1,GL_BLUE);
+    }
+    if(youLost){
+      break;
     }
    
     timer_delay(1);

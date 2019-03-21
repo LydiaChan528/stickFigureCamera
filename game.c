@@ -107,3 +107,9 @@ int hasRectangleCollided(struct Rectangle r1, struct Rectangle r2){
   }
   return 1;
 }
+
+void gameOver(){
+  gl_clear(GL_BLACK);
+  gl_draw_string(gl_get_width()/2,gl_get_height()/2,"GAME OVER", GL_BLUE);
+  gl_swap_buffer();
+}
