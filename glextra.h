@@ -35,8 +35,18 @@ struct Circle* calculateHead(const short* data, int rowSize);
 /*
  Draw a circle with a given center, radius, and color.
  */
-void drawCircle(int xCenter, int yCenter, int radius, color_t c);
+void gl_draw_circle(int xCenter, int yCenter, int radius, color_t c);
   /* To be implemented in glextra.c */
+
+/*
+
+ */
+void drawCircle(struct Circle circle, color_t color);
+
+/*
+
+ */
+void drawLine(struct Line line, color_t color);
 
 /*
 
