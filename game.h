@@ -50,7 +50,7 @@ void drawGamePieces();
 /*
 
  */
-void hasCollided();
+int hasCollided();
 
 
 #endif
