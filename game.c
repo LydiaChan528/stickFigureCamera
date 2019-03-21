@@ -69,7 +69,7 @@ void updateGamePieces(){
 
 void drawGamePieces(){
   //Draw balls 
-  drawCircle(ball.center.x,ball.center.y,ball.radius);
+  drawCircle(ball.center.x,ball.center.y,ball.radius, GL_BLACK);
   gl_swap_buffer();
   gl_clear(GL_WHITE);
 }

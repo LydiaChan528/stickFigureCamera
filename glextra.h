@@ -29,14 +29,13 @@ struct Rectangle{
 /*
 
  */
-struct Circle* calculateHead(const char* data);
+struct Circle* calculateHead(const short* data, int rowSize);
   /* To be implemented in glextra.c */
 
-
 /*
-
+ Draw a circle with a given center, radius, and color.
  */
-void drawCircle(int xCenter, int yCenter, int radius);
+void drawCircle(int xCenter, int yCenter, int radius, color_t c);
   /* To be implemented in glextra.c */
 
 /*
