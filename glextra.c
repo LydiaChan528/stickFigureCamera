@@ -13,14 +13,6 @@ struct Circle* head;
 #define THERMAL_BACKGROUND_COLOR GL_WHITE
 #define abs(x) ((x) > (0) ? (x) : (0))
 
-/*
-  Draw circles using the Mid-Point Circle Drawing Algorithm
-
-  @param xCenter  x-coordinate of circle center
-  @param yCenter  y-coordinate of circle center
-  @param radius   length of radius of circle
-  @param color    color to draw circle        
- */
 void gl_draw_circle(int xCenter, int yCenter, int radius, color_t color) {
   int x = radius;
   int y = 0;
@@ -75,13 +67,7 @@ void drawLine(struct Line line, color_t color) {
   gl_draw_line(start.x, start.y, end.x, end.y, color);
 }
 
-/*
-  Calculate the center of the head from thermal camera data
 
-  @param data     thermal data as a pointer to short
-  @param rowSize  size of rows and columns
-  @return         reference to circle representing the head    
- */
 struct Circle* calculateHead(const short* data, int rowSize){
   // /*to test*/printf("start head\n");
   head->radius = HEAD_RADIUS;
