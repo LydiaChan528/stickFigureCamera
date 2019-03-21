@@ -20,16 +20,24 @@ void main(void)
 {
   //initialize 
   uart_init();
-  gl_init(THERMAL_SCREEN_SIZE, THERMAL_SCREEN_SIZE, GL_DOUBLEBUFFER);
-  gl_clear(THERMAL_BACKGROUND_COLOR);
+  // gl_init(THERMAL_SCREEN_SIZE, THERMAL_SCREEN_SIZE, GL_DOUBLEBUFFER);
+  // gl_clear(THERMAL_BACKGROUND_COLOR);
+  gl_init(CANVAS_SCREEN_SIZE, CANVAS_SCREEN_SIZE, GL_DOUBLEBUFFER);
+  gl_clear(CANVAS_BACKGROUND_COLOR);
   i2c_init();
 
   //storage for infraredData
   short* infraredData = malloc(sizeof(short)*64);
  
-  
+  //TEST drawCircle and drawLine
+  // struct Point a = {10, 10};
+  // struct Point b = {15, 15};
+  // struct Line line = {a, b};
+  // drawLine(line, GL_RED);
+  // struct Circle circle = {a, 3};
+  // drawCircle(circle, GL_BLUE);
+  // gl_swap_buffer();
 
-  /*
   //This is the janky working implementation to get data and interpolate it
   while(1){
     getDataFromInfraredSensor(infraredData);
@@ -42,16 +50,19 @@ void main(void)
     // printInfraredData(infraredData,8);
     // printInfraredData(interpolatedData15,15);
     // printInfraredData(interpolatedData29,29);
-    projectInfraredDataToMonitor(interpolatedData29,29);
+    // projectInfraredDataToMonitor(interpolatedData29,29);
 
-    // [GRAPHICS] Test calculate and draw head
-    // timer_delay_ms(500);
-    struct Circle* head = calculateHead(interpolatedData29, 29); 
-    // printf("HEAD cntr (%d,%d), rad=%d\n", head->center.x, head->center.y, head->radius);
-    gl_clear(THERMAL_BACKGROUND_COLOR);
-    drawCircle((THERMAL_SCREEN_SIZE - head->center.x), head->center.y, head->radius, GL_AMBER);
-    gl_swap_buffer();
+    // // [GRAPHICS] Test calculate and draw head
+    // // timer_delay_ms(500);
+    // struct Circle* head = calculateHead(interpolatedData29, 29); //pass this head into stickFigure
+    // // // printf("HEAD cntr (%d,%d), rad=%d\n", head->center.x, head->center.y, head->radius);
+    // gl_clear(THERMAL_BACKGROUND_COLOR);
+    gl_clear(CANVAS_BACKGROUND_COLOR);
+    // gl_draw_circle((head->center.x), head->center.y, head->radius, GL_AMBER);
+    // // gl_draw_circle((CANVAS_SCREEN_SIZE - head->center.x), head->center.y, head->radius, GL_AMBER);
 
+    stickFigure_init(calculateHead(interpolatedData29, 29), CANVAS_SCREEN_SIZE);
+    drawStickFigure();
 
     //draw Stick Figure
     // gl_clear(GL_WHITE);
@@ -74,32 +85,20 @@ void main(void)
     // gl_draw_line(axis, (head_ctr+head_rad)+(body_lng/4), axis+leg_wid, (head_ctr+head_rad)+(body_lng/2)+1, GL_BLACK);//right arm
     // gl_swap_buffer();
 
+    gl_swap_buffer();
+
     // timer_delay_ms(500);
     }
-  */
-
+  
+  /*
   //[GAME] sucessfully tested beginning implementation of balls falling
   setGamePieces();
   while(1){
     drawGamePieces();
     updateGamePieces();
-    updateObstacleBounds();
-    struct Line tester;
-    tester.one.x = gl_get_width()/2;
-    tester.one.y = gl_get_height()-5;
-    tester.two.x = gl_get_width() + 6;
-    tester.two.y = gl_get_height()-5;
-    gl_draw_rect(gl_get_width()/2,gl_get_height()-6,6,2,GL_BLUE);
-    for(int i = 0; i < 3; i++){
-      if(hasRectangleCollided(calculateBoundsForRect(tester),obstacleBounds[i])){
-	printf("YOU LOST");
-      }
-      //gl_draw_rect(obstacleBounds[i].two.x,obstacleBounds[i].two.y,1,1,GL_BLUE);
-    }
-   
-    timer_delay(1);
+    timer_delay(2);
   }
-  
+  */
 
   /*
   //[GRAPHICS] TEST struct for head
@@ -115,6 +114,7 @@ void main(void)
   gl_swap_buffer();
   */
 }
+
 
 
 
