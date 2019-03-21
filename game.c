@@ -74,14 +74,23 @@ void drawGamePieces(){
   gl_clear(GL_WHITE);
 }
 
-void hasCollided(){
+int hasCollided(){
   //iterate through the boundary boxes for collision with game pieces
   for(int i = 0; i < numOfBounds; i++){
-    
+    if(hasRectangleCollided(allBounds[i],obstacleBounds)){
+      return 1;
+    }
   }
- 
+  return 0;
 }
 
-int hasRectangleCollided(struct Rectangle one, struct Rectangle two){
+int hasRectangleCollided(struct Rectangle r1, struct Rectangle r2){
+  //test if one rectangle is to the left of another(two is upperLeft, three is   //bottom right)
+  if(r1.two.x > r2.three.x || r1.three.x > r2.two.x){
+    return 0;
+  }
+  else if(r1.two.y < r2.three.y || r2.two.y < r1.three.y){
+    return 0;
+  }
   return 1;
 }
