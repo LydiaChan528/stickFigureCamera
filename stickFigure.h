@@ -14,13 +14,18 @@ struct Player{
 
 struct Player player;
 
+/*
+  Draw a stick figure by its components: head, torso, legs, and arms.
+ */
 void drawStickFigure();
-  //To be implemented in stickFigure.c
 
- /*Implementation to update stick figure:
-   1) interrupt handler with interrupt as change in motion
-   2) called like a "console_print" to refresh stick figure
-  */
-void updateStickFigure();
+/*
+  Update dimensions and location of stick figure on screen, 
+  based on thermal camera inputs and head location.
+
+  @param personHead   head location on which to base stick figure location
+  @param screenSize   size of frame that stick figure is drawn in
+ */
+void updateStickFigure(struct Circle* personHead, int screenSize);
 
 #endif
