@@ -2,6 +2,8 @@
 #include "glextra.h"
 #include "stickFigure.h"
 #include "gl.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 
 void updatePlayerBounds(){
@@ -20,7 +22,9 @@ void updatePlayerBounds(){
 }
 
 void updateObstacleBounds(){
-  obstacleBounds = calculateBoundsForCircle(ball);
+  for(int i = 0; i < 3; i++){
+    obstacleBounds[i] = calculateBoundsForCircle(balls[i]);
+  }
 }
 
 struct Rectangle calculateBoundsForCircle(struct Circle c){
@@ -55,21 +59,28 @@ struct Rectangle calculateBoundsForRect(struct Line line){
 }
 
 void setGamePieces(){
-  ball.center.x = gl_get_width()/2;
-  ball.center.y = 0;
+  for(int i = 0; i < 3; i++){
+    int randomBall = (rand() % (gl_get_width() + 1));
+    balls[i].center.x = randomBall;
+    balls[i].center.y = 0; 
+  }
 }
 
 void updateGamePieces(){
-  ball.center.y += 1;
-  //if the ball goes to the bottom of the screen, reset it
-  if(ball.center.y >= gl_get_height()){
-    ball.center.y = 0;
+  for(int i = 0; i < 3; i++){
+    balls[i].center.y += 1;
+    //if the ball goes to the bottom of the screen, reset it
+    if(balls[i].center.y >= gl_get_height()){
+      setGamePieces();
+    }
   }
 }
 
 void drawGamePieces(){
   //Draw balls 
-  drawCircle(ball.center.x,ball.center.y,ball.radius, GL_BLACK);
+  for(int i = 0; i < 3; i++){
+    drawCircle(balls[i].center.x,balls[i].center.y,balls[i].radius, GL_BLACK);
+  }
   gl_swap_buffer();
   gl_clear(GL_WHITE);
 }
@@ -77,9 +88,11 @@ void drawGamePieces(){
 int hasCollided(){
   //iterate through the boundary boxes for collision with game pieces
   for(int i = 0; i < numOfBounds; i++){
-    if(hasRectangleCollided(allBounds[i],obstacleBounds)){
-      return 1;
-    }
+    for(int j = 0; j < 3; j++){
+      if(hasRectangleCollided(allBounds[i],obstacleBounds[j])){
+	return 1;
+      }
+    } 
   }
   return 0;
 }
