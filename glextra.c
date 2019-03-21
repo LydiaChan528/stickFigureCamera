@@ -13,16 +13,23 @@ struct Circle* head;
 #define THERMAL_BACKGROUND_COLOR GL_WHITE
 #define abs(x) ((x) > (0) ? (x) : (0))
 
-/*Draw circles with Mid-Point Algorithm*/
-void drawCircle(int xCenter, int yCenter, int radius, color_t c) {
+/*
+  Draw circles using the Mid-Point Circle Drawing Algorithm
+
+  @param xCenter  x-coordinate of circle center
+  @param yCenter  y-coordinate of circle center
+  @param radius   length of radius of circle
+  @param color    color to draw circle        
+ */
+void drawCircle(int xCenter, int yCenter, int radius, color_t color) {
   int x = radius;
   int y = 0;
 
   //draw 4 outerpoints
-  gl_draw_pixel(xCenter+x, yCenter+y, c);
-  gl_draw_pixel(xCenter+y, yCenter+x, c);
-  gl_draw_pixel(xCenter-x, yCenter-y, c);
-  gl_draw_pixel(xCenter-y, yCenter-x, c);
+  gl_draw_pixel(xCenter+x, yCenter+y, color);
+  gl_draw_pixel(xCenter+y, yCenter+x, color);
+  gl_draw_pixel(xCenter-x, yCenter-y, color);
+  gl_draw_pixel(xCenter-y, yCenter-x, color);
   
   int P = (1-radius);
   while (x > y) {
@@ -40,24 +47,28 @@ void drawCircle(int xCenter, int yCenter, int radius, color_t c) {
     }
 
     //draw point in all four quadrants
-    gl_draw_pixel(xCenter+x, yCenter+y, c);
-    gl_draw_pixel(xCenter-x, yCenter+y, c);
-    gl_draw_pixel(xCenter+x, yCenter-y, c);
-    gl_draw_pixel(xCenter-x, yCenter-y, c);
+    gl_draw_pixel(xCenter+x, yCenter+y, color);
+    gl_draw_pixel(xCenter-x, yCenter+y, color);
+    gl_draw_pixel(xCenter+x, yCenter-y, color);
+    gl_draw_pixel(xCenter-x, yCenter-y, color);
 
     if (x != y) {
       //draw reflected point over y=x in all four quadrants
-      gl_draw_pixel(xCenter+y, yCenter+x, c);
-      gl_draw_pixel(xCenter-y, yCenter+x, c);
-      gl_draw_pixel(xCenter+y, yCenter-x, c);
-      gl_draw_pixel(xCenter-y, yCenter-x, c);
+      gl_draw_pixel(xCenter+y, yCenter+x, color);
+      gl_draw_pixel(xCenter-y, yCenter+x, color);
+      gl_draw_pixel(xCenter+y, yCenter-x, color);
+      gl_draw_pixel(xCenter-y, yCenter-x, color);
     }
 
   }
 }
 
 /*
+  Calculate the center of the head from thermal camera data
 
+  @param data     thermal data as a pointer to short
+  @param rowSize  size of rows and columns
+  @return         reference to circle representing the head    
  */
 struct Circle* calculateHead(const short* data, int rowSize){
   // /*to test*/printf("start head\n");
@@ -119,12 +130,7 @@ struct Circle* calculateHead(const short* data, int rowSize){
   }
 
   return head;
-  /* To be implemented in glextra.c */
 }
-
-// void printHead() {
-//   printf("HEAD cntr (%d,%d), rad=%d\n", head->center.x, head->center.y, head->radius);
-// }
 
 void projectInfraredDataToMonitor(short* infraredData, int rowSize){
   gl_clear(THERMAL_BACKGROUND_COLOR);

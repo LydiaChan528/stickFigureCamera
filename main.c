@@ -11,7 +11,8 @@
 
 #define THERMAL_SCREEN_SIZE 29
 #define THERMAL_BACKGROUND_COLOR GL_WHITE
-#define CANVAS_SCREEN_SIZE 100
+
+#define CANVAS_SCREEN_SIZE 150
 #define CANVAS_BACKGROUND_COLOR GL_WHITE
 #define CANVAS_DRAW_COLOR GL_BLACK
 
@@ -20,7 +21,7 @@ void main(void)
   //initialize 
   uart_init();
   gl_init(THERMAL_SCREEN_SIZE, THERMAL_SCREEN_SIZE, GL_DOUBLEBUFFER);
-  gl_clear(THERMAL_BACKGROUND_COLOR);
+  gl_clear(CANVAS_BACKGROUND_COLOR);
   i2c_init();
 
   //storage for infraredData
@@ -39,16 +40,39 @@ void main(void)
     // printInfraredData(infraredData,8);
     // printInfraredData(interpolatedData15,15);
     // printInfraredData(interpolatedData29,29);
-    projectInfraredDataToMonitor(interpolatedData29,29);
+    // projectInfraredDataToMonitor(interpolatedData29,29);
 
-    // [GRAPHICS] Test calculate and draw head
+    // // [GRAPHICS] Test calculate and draw head
+    // struct Circle* head = calculateHead(interpolatedData29, 29); 
+    // // printf("HEAD cntr (%d,%d), rad=%d\n", head->center.x, head->center.y, head->radius);
+    // gl_clear(THERMAL_BACKGROUND_COLOR);
+    // drawCircle((THERMAL_SCREEN_SIZE - head->center.x), head->center.y, head->radius, GL_AMBER);
+    // gl_swap_buffer();
+    // // timer_delay_ms(500);
+
+    //draw Stick Figure
+    gl_clear(CANVAS_BACKGROUND_COLOR);
     struct Circle* head = calculateHead(interpolatedData29, 29); 
-    // printf("HEAD cntr (%d,%d), rad=%d\n", head->center.x, head->center.y, head->radius);
-    gl_clear(THERMAL_BACKGROUND_COLOR);
-    drawCircle((THERMAL_SCREEN_SIZE - head->center.x), head->center.y, head->radius, GL_AMBER);
-    gl_swap_buffer();
-    // timer_delay_ms(500);
+    struct Point figureHeadCenter = { (THERMAL_SCREEN_SIZE - head->center.x), ((2*THERMAL_SCREEN_SIZE/3) + head->center.y - head->radius)};
+    struct Circle figureHead = { figureHeadCenter, head->radius };
+    // drawCircle(figureHead.center.x, figureHead.center.y, figureHead.radius, CANVAS_DRAW_COLOR);
 
+    //TEST draw hooman
+    int axis = figureHead.center.x;
+    int head_ctr = figureHead.center.y;
+    int head_rad = figureHead.radius;//3
+    int body_lng = (4*figureHead.radius);//12
+    int leg_wid = (figureHead.radius+1);//4
+    int leg_lng = (2*figureHead.radius);//6
+    drawCircle(axis, head_ctr, head_rad, GL_BLACK);
+    gl_draw_line(axis, (head_ctr+head_rad), axis, (head_ctr+head_rad+body_lng), GL_BLACK);//torso
+    gl_draw_line(axis, (head_ctr+head_rad+body_lng), axis-leg_wid, (head_ctr+head_rad+body_lng+leg_lng), GL_BLACK);//left leg
+    gl_draw_line(axis, (head_ctr+head_rad+body_lng), axis+leg_wid, (head_ctr+head_rad+body_lng+leg_lng), GL_BLACK);//right leg
+    gl_draw_line(axis, (head_ctr+head_rad)+(body_lng/4), axis-leg_wid, (head_ctr+head_rad)+(body_lng/2)+1, GL_BLACK);//left arm
+    gl_draw_line(axis, (head_ctr+head_rad)+(body_lng/4), axis+leg_wid, (head_ctr+head_rad)+(body_lng/2)+1, GL_BLACK);//right arm
+    gl_swap_buffer();
+
+    timer_delay_ms(500);
     }
   
   /*
