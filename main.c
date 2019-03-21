@@ -27,7 +27,9 @@ void main(void)
   //storage for infraredData
   short* infraredData = malloc(sizeof(short)*64);
  
+  
 
+  /*
   //This is the janky working implementation to get data and interpolate it
   while(1){
     getDataFromInfraredSensor(infraredData);
@@ -74,16 +76,30 @@ void main(void)
 
     // timer_delay_ms(500);
     }
-  
-  /*
+  */
+
   //[GAME] sucessfully tested beginning implementation of balls falling
   setGamePieces();
   while(1){
     drawGamePieces();
     updateGamePieces();
-    timer_delay(2);
+    updateObstacleBounds();
+    struct Line tester;
+    tester.one.x = gl_get_width()/2;
+    tester.one.y = gl_get_height()-5;
+    tester.two.x = gl_get_width() + 6;
+    tester.two.y = gl_get_height()-5;
+    gl_draw_rect(gl_get_width()/2,gl_get_height()-6,6,2,GL_BLUE);
+    for(int i = 0; i < 3; i++){
+      if(hasRectangleCollided(calculateBoundsForRect(tester),obstacleBounds[i])){
+	printf("YOU LOST");
+      }
+      //gl_draw_rect(obstacleBounds[i].two.x,obstacleBounds[i].two.y,1,1,GL_BLUE);
+    }
+   
+    timer_delay(1);
   }
-  */
+  
 
   /*
   //[GRAPHICS] TEST struct for head

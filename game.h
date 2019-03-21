@@ -3,7 +3,7 @@
 
 #include "stickFigure.h"
 
-static struct Circle ball;
+static struct Circle balls[3];
 static int numOfBounds = 4;
 
 //Player Bounds
@@ -12,7 +12,7 @@ struct Rectangle lArmBounds;
 struct Rectangle rArmBounds;
 struct Rectangle torsoBounds;
 //Obstacle Bounds
-struct Rectangle obstacleBounds;
+struct Rectangle obstacleBounds[3];
 
 struct Rectangle allBounds[4];
 
