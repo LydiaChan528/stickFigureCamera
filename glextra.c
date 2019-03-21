@@ -21,7 +21,7 @@ struct Circle* head;
   @param radius   length of radius of circle
   @param color    color to draw circle        
  */
-void drawCircle(int xCenter, int yCenter, int radius, color_t color) {
+void gl_draw_circle(int xCenter, int yCenter, int radius, color_t color) {
   int x = radius;
   int y = 0;
 
@@ -61,6 +61,18 @@ void drawCircle(int xCenter, int yCenter, int radius, color_t color) {
     }
 
   }
+}
+
+void drawCircle(struct Circle circle, color_t color) {
+  struct Point circleCenter = circle.center;
+  int circleRad = circle.radius;
+  gl_draw_circle(circleCenter.x, circleCenter.y, circleRad, color);
+}
+
+void drawLine(struct Line line, color_t color) {
+  struct Point start = line.one;
+  struct Point end = line.two;
+  gl_draw_line(start.x, start.y, end.x, end.y, color);
 }
 
 /*
@@ -114,7 +126,7 @@ struct Circle* calculateHead(const short* data, int rowSize){
             }
 
             if ((checkEnd - checkStart) >= BODY_WIDTH_MARGIN) {
-              int headX = (start+end)/2;
+              int headX = (rowSize - (start+end)/2);
               int headY = (row + HEAD_RADIUS);
               struct Point headCenter = { headX, headY};
               // /*to test*/printf("HEAD at (%d,%d)\n", headX, headY);
