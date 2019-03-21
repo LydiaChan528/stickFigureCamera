@@ -10,6 +10,7 @@ struct Circle* head;
 #define HEAD_RADIUS 5
 #define BODY_WIDTH_MARGIN 2
 #define BODY_LENGTH_MARGIN 3
+#define THERMAL_BACKGROUND_COLOR GL_WHITE
 #define abs(x) ((x) > (0) ? (x) : (0))
 
 /*Draw circles with Mid-Point Algorithm*/
@@ -126,7 +127,7 @@ struct Circle* calculateHead(const short* data, int rowSize){
 // }
 
 void projectInfraredDataToMonitor(short* infraredData, int rowSize){
-  gl_clear(GL_WHITE);
+  gl_clear(THERMAL_BACKGROUND_COLOR);
   int row = 0;
   //TO:DO GET MATH LIB TO WORK SO THIS BECOMES MORE DYNAMIC, not(col % constant)
   for(int col = 0; col < rowSize*rowSize; col++){
