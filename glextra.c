@@ -1,17 +1,27 @@
 #include "glextra.h"
 #include "gl.h"
 #include "timer.h"
-#include "printf.h"
+// #include "printf.h"
+#include "malloc.h"
 #include "math.h"
 
 struct Circle* head;
+struct Line* head_width;
+struct Point* leftArmLength;
+struct Point* rightArmLength;
+// struct Line* liny;
 
 #define ROOM_TEMP 22
 #define HEAD_RADIUS 5
+#define HEAD_ERROR_MARGIN 1
 #define BODY_WIDTH_MARGIN 2
 #define BODY_LENGTH_MARGIN 3
 #define THERMAL_BACKGROUND_COLOR GL_WHITE
 #define abs(x) ((x) > (0) ? (x) : (0))
+#define min(x, y) ((x) < (y) ? (x) : (y))
+#define max(x, y) ((x) > (y) ? (x) : (y))
+
+#define ARM_MARGIN 5
 
 void gl_draw_circle(int xCenter, int yCenter, int radius, color_t color) {
   int x = radius;
@@ -67,6 +77,113 @@ void drawLine(struct Line line, color_t color) {
   gl_draw_line(start.x, start.y, end.x, end.y, color);
 }
 
+static void checkHead(struct Point newHead) {
+  if ( abs(newHead.x - head->center.x) >= 1) {
+    head->center.x = newHead.x;
+  }
+  if ( abs(newHead.y - head->center.y) >= 1 ) {
+    head->center.y = newHead.y;
+  }
+}
+
+// struct Circle* calculateHead(const short* data, int rowSize){
+static struct Point* findArm(const short* data, int rowSize, struct Point start, int mode) {
+  struct Point* extreme = (struct Point *)malloc(sizeof(struct Point *));
+  int maxLen = 0;
+
+  int row;
+
+  // /*to test*/printf("startFindArm\n");
+  // for (int row = start.y; row < rowSize; row++) {
+  for (row = start.y; row < min(row + ARM_MARGIN, rowSize); row++) {
+    // printf("row %d\n", row);
+    int col = start.x;
+    int len = 0;
+
+    //find MIN
+    if (mode < 0) {
+      while ((col >= 0) && (data[row*rowSize + col]/4 > ROOM_TEMP)) {
+        col--;
+        len++;
+      }
+    } 
+
+    //find MAX  
+    else {
+      if (mode > 0) {
+
+        //move down to warm 
+        while ((col >= 0) && (data[row*rowSize + col]/4 <= ROOM_TEMP)) {
+          col--;
+        }
+
+        if ((head->center.x >= 0) && (col >= head->center.x)) {
+          while ( (col < rowSize) && (data[row*rowSize + col]/4 > ROOM_TEMP)) {
+            col++;
+            len++;
+          }
+        }
+
+      }
+    }
+    
+    if (len > maxLen) {
+      maxLen = len;
+
+      if (mode < 0) {
+        extreme->x = (col+1);
+      } else {
+        extreme->x = (col-1);
+      }
+
+      extreme->y = row;
+    }
+  }
+
+ return extreme;
+}
+
+struct Line* calculateArms(const short* data, int rowSize){
+  // printf("start\n");
+  struct Line* maxMinLine = (struct Line *)malloc(sizeof(struct Line *));
+  // struct Point* search = data[];
+  // head_width->one = (struct Point){start, row};
+  // head_width->two = (struct Point){end, row};
+
+  if ((head->center.x < 0) || (head->center.y < 0)) {
+    leftArmLength->x = -1;
+    leftArmLength->y = -1;
+    rightArmLength->x = -1;
+    rightArmLength->y = -1;
+    maxMinLine->one = (struct Point){leftArmLength->x, leftArmLength->y};
+    maxMinLine->two = (struct Point){rightArmLength->x, rightArmLength->y};
+    return maxMinLine;
+  } 
+  else {
+    // find min
+
+    // printf("malloc\n");
+    struct Point min = head_width->one;//data[start+row*rowSize];
+    leftArmLength = findArm(data, rowSize, min, -1);
+
+    // printf("FOUND LEFT ARM!\n");
+    // static struct Point* findArm(const short* data, int rowSize, struct Point start, int mode) {
+    // // struct Point* findLongestPath(const short* data, Point pos, int rowSize, int mode) {
+
+    //find max
+    struct Point max = head_width->two;//data[end+row*rowSize];
+    rightArmLength = findArm(data, rowSize, max, 1);
+    // printf("FOUND RIGHT ARM!\n");
+    // // struct Line* minMaxLine;
+    // // minMaxLine->one = (struct Point){leftArmLength->x, leftArmLength->y};
+    // // minMaxLine->two = (struct Point){rightArmLength->x, rightArmLength->y};
+  }
+
+  // return &(struct Line){*leftArmLength, *rightArmLength};
+  maxMinLine->one = (struct Point){leftArmLength->x, leftArmLength->y};
+  maxMinLine->two = (struct Point){rightArmLength->x, rightArmLength->y};
+  return maxMinLine;
+}
 
 struct Circle* calculateHead(const short* data, int rowSize){
   // /*to test*/printf("start head\n");
@@ -115,8 +232,14 @@ struct Circle* calculateHead(const short* data, int rowSize){
               int headX = (rowSize - (start+end)/2);
               int headY = (row + HEAD_RADIUS);
               struct Point headCenter = { headX, headY};
+
+              //for finding arms
+              head_width->one = (struct Point){start, row};
+              head_width->two = (struct Point){end, row};
+
               // /*to test*/printf("HEAD at (%d,%d)\n", headX, headY);
-              head->center = headCenter;
+              // head->center = headCenter;
+              checkHead(headCenter);
               return head;
             }
           }
@@ -131,6 +254,7 @@ struct Circle* calculateHead(const short* data, int rowSize){
   // printf("dim %d, %d\n", gl_get_width(), gl_get_height());
   return head;
 }
+
 
 void projectInfraredDataToMonitor(short* infraredData, int rowSize){
   gl_clear(THERMAL_BACKGROUND_COLOR);
@@ -152,7 +276,7 @@ void projectInfraredDataToMonitor(short* infraredData, int rowSize){
     gl_draw_pixel(col%rowSize,row,gl_color(red,0,blue));
     infraredData++; 
   }
-  gl_swap_buffer();
+  // gl_swap_buffer();
 }
 
 

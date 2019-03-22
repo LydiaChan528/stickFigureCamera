@@ -30,6 +30,6 @@ void drawStickFigure();
 
   @param personHead   head location on which to base stick figure location
  */
-void stickFigure_init(struct Circle* personHead);
+void stickFigure_init(struct Circle* personHead, struct Line* armLength);
 
 #endif

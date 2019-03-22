@@ -36,6 +36,9 @@ struct Rectangle{
 struct Circle* calculateHead(const short* data, int rowSize);
   /* To be implemented in glextra.c */
 
+
+struct Line* calculateArms(const short* data, int rowSize);
+
 /*
   Draw circles using the Mid-Point Circle Drawing Algorithm, given
   center coordinates, radius length, and color.
