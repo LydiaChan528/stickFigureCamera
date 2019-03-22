@@ -28,6 +28,7 @@ Below is a breakdown of what each of us designed and created for this project: <
 - Stick Figure: heuristic head and arm detection from camera data <br/>
   ![Stick Figure](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/stickFigureRendering.png)
 - Graphics: rendering lines, circles, and stick figure** <br/>
+  ![Arm Detection](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/armDetection.png)
   ![Thermal Camera Data for Head/Arm Detection, Case 1](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/headArmDetection.png)
   ![Thermal Camera Data for Head/Arm Detection, Case 2](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/headArmDetection2.png)
 
