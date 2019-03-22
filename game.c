@@ -2,6 +2,7 @@
 #include "gl.h"
 #include "glextra.h"
 #include "stickFigure.h"
+#include "timer.h"
 // #include <stdio.h>
 #include <stdlib.h>
 
@@ -108,8 +109,14 @@ int hasRectangleCollided(struct Rectangle r1, struct Rectangle r2){
 }
 
 void gameOver(){
-  gl_clear(GL_BLACK);
-  gl_draw_string(gl_get_width()/3,gl_get_height()/3,"GAME", GL_RED);
-  gl_draw_string(gl_get_width()/3,gl_get_height()/3+ gl_get_height()/3,"OVER", GL_RED);
-  gl_swap_buffer();
+  while (1) {
+    gl_clear(GL_BLACK);
+    gl_draw_string(gl_get_width()/3,gl_get_height()/3,"GAME", GL_RED);
+    gl_draw_string(gl_get_width()/3,(gl_get_height()/3+ 2*gl_get_char_height()),"OVER", GL_RED);
+    gl_swap_buffer();
+    timer_delay_ms(800);
+    gl_clear(GL_BLACK);
+    gl_swap_buffer();
+    timer_delay_ms(800);
+  }
 }

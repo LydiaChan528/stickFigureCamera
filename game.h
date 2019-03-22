@@ -40,7 +40,17 @@ void updatePlayerBounds();
 /*
 
  */
+void setGamePieces();
+
+/*
+
+ */
 void updateGamePieces();
+
+/*
+
+ */
+void updateObstacleBounds();
 
 /*
 
@@ -52,5 +62,9 @@ void drawGamePieces();
  */
 int hasCollided();
 
+/*
+
+ */
+void gameOver();
 
 #endif
