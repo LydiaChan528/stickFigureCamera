@@ -12,20 +12,23 @@ Below is a breakdown of what each of us designed and created for this project: <
 ### Both: <br/>
 - Interface with thermal camera through I2C protocol <br/>
 - Implement motion and redrawing of game elements <br/>
+  ![Game in Action](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/gameInAction.png)
 - Integrate everything <br/>
-  ![Game in Action] (https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/gameInAction.png)
-  ![Game Over] (https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/gameOver.png)
+  ![Game Over](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/gameOver.png)
 ### Andy: <br/>
 - Interpolation of thermal camera data from 8x8 to 29x29 <br/>
-  ![No Interpolation](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/No%20interpolation.PNG)
-  ![15x15] (https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/15x15.PNG)
-  ![29x29] (https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/29x29.PNG)
+  ![No Interpolation](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/No%20interpolation.PNG) <br/>
+  
+  ![15x15](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/15x15.PNG) <br/>
+  
+  ![29x29](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/29x29.PNG) <br/>
+  
 - Game mechanics: element boundaries and collision detection <br/>
 ### Lydia: <br/>
 - Stick Figure: heuristic head and arm detection from camera data <br/>
   ![Stick Figure](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/stickFigureRendering.png)
 - Graphics: rendering lines, circles, and stick figure <br/>
-  ![Thermal Camera Data for Head/Arm Detection, Case 1] (https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/headArmDetection.png)
-  ![Thermal Camera Data for Head/Arm Detection, Case 2] (https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/headArmDetection2.png)
+  ![Thermal Camera Data for Head/Arm Detection, Case 1](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/headArmDetection.png)
+  ![Thermal Camera Data for Head/Arm Detection, Case 2](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/headArmDetection2.png)
 
 The circle-drawing algorithm is based the Mid-Point Circle Drawing Algorithm from GeeksforGeeks.
