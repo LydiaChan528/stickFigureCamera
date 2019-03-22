@@ -78,12 +78,12 @@ void drawLine(struct Line line, color_t color) {
 }
 
 static void checkHead(struct Point newHead) {
-  if ( abs(newHead.x - head->center.x) >= 1) {
+  // if ( abs(newHead.x - head->center.x) >= 1) {
     head->center.x = newHead.x;
-  }
-  if ( abs(newHead.y - head->center.y) >= 1 ) {
+  // }
+  // if ( abs(newHead.y - head->center.y) >= 1 ) {
     head->center.y = newHead.y;
-  }
+  // }
 }
 
 // struct Circle* calculateHead(const short* data, int rowSize){
@@ -192,7 +192,6 @@ struct Circle* calculateHead(const short* data, int rowSize){
   int row;
 
   for (row = 0; row < rowSize; row++) {
-    // /*to test*/printf("\nR%d:", row);
 
     int start = -1;
     int end = -1;
@@ -200,10 +199,8 @@ struct Circle* calculateHead(const short* data, int rowSize){
     for (int col = 0; col < rowSize; col++) {
       if(*data/4 > ROOM_TEMP){ //warm pixel
         end = col;
-        // /*to test*/printf("e%d", col);
         if (start < 0) {
           start = col;
-          // /*to test*/printf("start%d", start);
         }
       } else {
 
@@ -251,7 +248,6 @@ struct Circle* calculateHead(const short* data, int rowSize){
   }
 
   head->center = (struct Point){-1, -1};
-  // printf("dim %d, %d\n", gl_get_width(), gl_get_height());
   return head;
 }
 
@@ -276,106 +272,5 @@ void projectInfraredDataToMonitor(short* infraredData, int rowSize){
     gl_draw_pixel(col%rowSize,row,gl_color(red,0,blue));
     infraredData++; 
   }
-  // gl_swap_buffer();
+  gl_swap_buffer();
 }
-
-
-
-// /* Helper function to drawCircle(). This function draws in all 8 octaves of a 
-// circle derived from Bresenham's Circle Algorithm.
-//  */
-// static void drawOuterPoints(int xc, int yc, int x, int y, color_t color) {
-//   gl_draw_pixel(xc+x, yc+y, color);
-//   gl_draw_pixel(xc-x, yc+y, color);
-//   gl_draw_pixel(xc+x, yc-y, color);
-//   gl_draw_pixel(xc-x, yc-y, color);
-//   gl_draw_pixel(xc+y, yc+x, color);
-//   gl_draw_pixel(xc-y, yc+x, color);
-//   gl_draw_pixel(xc+y, yc-x, color);
-//   gl_draw_pixel(xc-y, yc-x, color);
-// }
-
-// /*Draw circles using Bresenham's algorithm*/
-// void drawCircle(int xCenter, int yCenter, int radius, color_t c) {
-//   int x = 0;
-//   int y = radius;
-//   int decision = 3 - (2*radius);
-//   drawOuterPoints(xCenter, yCenter, x, y, c);
-
-//   while (y > x) {
-//     x++;
-//     if (decision > 0) {
-//       y--;
-//       decision += (4*(x-y) + 10);
-//     } else {
-//       decision += ((4*x) + 6);
-//     }
-//     drawOuterPoints(xCenter, yCenter, x, y, c);
-//   } 
-// }
-
-// struct Circle* calculateHead(const short* data, int rowSize){
-//   const short* dataPtr = data;
-
-//   head->radius = HEAD_RADIUS;
-//   int headTop = -1;
-//   int bodyStart = -1;
-//   int bodyEnd = -1;
-
-//   for (int row = 0; row < rowSize; row++) {
-//     int start = -1;
-//     int end = -1;
-//     int col = 0;
-
-//     /*to test*/printf("\nrow %d:", row);
-
-//     //find the warm block (body start and end)
-//     while ((col < rowSize)) {
-//       // int data[row][col] = currTemp;
-
-//       if (*dataPtr/4 > 22) { //"red"
-//         if (start < 0) {
-//           start = col;
-//           /*to test*/printf("start %d;", start);
-//         }
-//         end = col;
-//         /*to test*/printf("E%d, ", end);
-//       }  
-//       ///blue or black if <= 22
-//       else if ((start > 0) && (end > 0)) {
-//         /*to test*/printf("MAYBE FOUND WARM BLOCK! diff = %d\n", (end-start));
-
-//         if ((end-start) >= BODY_ERROR) {
-
-//           //found warm block
-//           if (headTop < 0) {
-//             /*to test*/printf("STARTING SOMETHING\n");
-//             bodyStart = start;
-//             bodyEnd = end;
-//             headTop = row;
-//           } else if ( (abs(bodyStart - start) < BODY_ERROR) && (abs(bodyEnd - end) < BODY_ERROR) ) {
-//             // headTop = row-1;
-//             /*to test*/printf("ENDING SOMETHING\n");
-//             break;
-//           } 
-
-//         } else {
-//           //reset warm block
-//           start = -1;
-//           end = -1;
-//         }
-//       }
-
-//       col++;
-//       dataPtr++;
-//     }
-
-//   }
-
-
-//   struct Point headCenter = { (bodyEnd + bodyStart)/2, (headTop+HEAD_RADIUS) };
-//   head->center = headCenter;
-//   printf("HEAD: (%d,%d)\n", headCenter.x, headCenter.y);
-//   return head;
-//   /* To be implemented in glextra.c */
-// }

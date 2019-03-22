@@ -74,9 +74,9 @@ static void stickFigure_buildBody(int base_length, struct Line* armLength) {
 	int rightArmWid = arm_width;
 	int leftArmWid = arm_width;
 
-	if (inScreenBounds(armLength->one.x) && inScreenBounds(armLength->one.y) && inScreenBounds(armLength->two.x) && inScreenBounds(armLength->two.y)) {
-		stickFigure_buildArms(sum, arm_width, armLength, &leftArmWid, &rightArmWid);
-	}
+	// if (inScreenBounds(armLength->one.x) && inScreenBounds(armLength->one.y) && inScreenBounds(armLength->two.x) && inScreenBounds(armLength->two.y)) {
+	// 	stickFigure_buildArms(sum, arm_width, armLength, &leftArmWid, &rightArmWid);
+	// }
 
 	int rightArmLen = (sum - rightArmWid);
 	int leftArmLen = (sum - leftArmWid);

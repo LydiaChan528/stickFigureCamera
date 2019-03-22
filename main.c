@@ -47,25 +47,8 @@ void main(void)
     short* interpolatedData29 = malloc(sizeof(short)*29*29);
     interpolateSensorData(interpolatedData15,interpolatedData29,15,29);
 
-    // projectInfraredDataToMonitor(interpolatedData29,29);
-
-    // struct Circle* head = (calculateHead(interpolatedData29, 29));
-    // printf("HEAD: (%d, %d)\n", head->center.x, head->center.y);
-    // struct Circle realHead = { (struct Point){head->center.x, head->center.y}, 4};
-
-    // struct Line* leftRight = (calculateArms(interpolatedData29, 29));
-    // printf("LEFT ARM: (%d, %d)\nRIGHT ARM: (%d, %d)\n", leftRight->one.x, leftRight->one.y, leftRight->two.x, leftRight->two.y);
-    // struct Circle leftArm = {leftRight->one, 3};
-    // struct Circle rightArm = {leftRight->two, 3};
-
-    // drawCircle(realHead, GL_AMBER);
-    // drawCircle(leftArm, GL_GREEN);
-    // drawCircle(rightArm, GL_GREEN);
-
-    // ACTUAL IMPLEMENTATION OF PROGRAM
     //[STICK FIGURE]
     stickFigure_init(calculateHead(interpolatedData29, 29), calculateArms(interpolatedData29, 29));
-    // void stickFigure_init(struct Circle* personHead, struct Line* armLength) {
     updatePlayerBounds();
     drawStickFigure();
 
