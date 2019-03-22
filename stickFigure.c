@@ -17,7 +17,7 @@
 
 //struct Player player;
 
-void updateStickFigure(struct Circle* personHead, int screenSize) {
+void stickFigure_init(struct Circle* personHead, int screenSize) {
 	//center the stickFigure by interpolation
 	int base_length = 5; //radius, length that body is based on
 
@@ -76,7 +76,6 @@ void updateStickFigure(struct Circle* personHead, int screenSize) {
 	player.leftArm = leftArmLine;
 	struct Line rightArmLine = {torsoArm, rightArmEnd};
 	player.rightArm = rightArmLine;
-
 }
 
 void drawStickFigure() {

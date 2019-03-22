@@ -26,6 +26,8 @@ void drawStickFigure();
   @param personHead   head location on which to base stick figure location
   @param screenSize   size of frame that stick figure is drawn in
  */
-void updateStickFigure(struct Circle* personHead, int screenSize);
+void updateStickFigure();
+
+void stickFigure_init(struct Circle* personHead, int screenSize);
 
 #endif
