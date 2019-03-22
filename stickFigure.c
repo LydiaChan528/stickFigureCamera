@@ -81,8 +81,8 @@ static void stickFigure_buildBody(int base_length, struct Line* armLength) {
 	int rightArmLen = (sum - rightArmWid);
 	int leftArmLen = (sum - leftArmWid);
 
-	printf("ARM wid = %d, %d\n", rightArmWid, leftArmWid);
-	printf("ARM len = %d, %d\n", rightArmLen, leftArmLen);
+	// printf("ARM wid = %d, %d\n", rightArmWid, leftArmWid);
+	// printf("ARM len = %d, %d\n", rightArmLen, leftArmLen);
 
 	struct Point torsoArm = {headTorso.x, headTorso.y + arm_pos};
 	struct Point leftArmEnd = {torsoArm.x - rightArmWid, torsoArm.y + rightArmLen};
