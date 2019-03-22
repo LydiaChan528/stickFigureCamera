@@ -10,7 +10,7 @@ But it's game over if they are hit.
 
 Below is a breakdown of what each of us designed and created for this project: <br/>
 ### Both: <br/>
-- Interface with thermal camera through I2C protocol <br/>
+- Interface with thermal camera through I2C protocol* <br/>
 - Implement motion and redrawing of game elements <br/>
   ![Game in Action](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/gameInAction.png)
 - Integrate everything <br/>
@@ -27,8 +27,11 @@ Below is a breakdown of what each of us designed and created for this project: <
 ### Lydia: <br/>
 - Stick Figure: heuristic head and arm detection from camera data <br/>
   ![Stick Figure](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/stickFigureRendering.png)
-- Graphics: rendering lines, circles, and stick figure <br/>
+- Graphics: rendering lines, circles, and stick figure** <br/>
   ![Thermal Camera Data for Head/Arm Detection, Case 1](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/headArmDetection.png)
   ![Thermal Camera Data for Head/Arm Detection, Case 2](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/headArmDetection2.png)
 
-The circle-drawing algorithm is based the Mid-Point Circle Drawing Algorithm from GeeksforGeeks.
+Sources <br/>
+(*)We used the I2C driver in the CS107E library.<br/>
+(**)The circle-drawing algorithm is based the Mid-Point Circle Drawing Algorithm from GeeksforGeeks.<br/>
+
