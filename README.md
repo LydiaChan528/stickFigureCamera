@@ -15,6 +15,7 @@ Below is a breakdown of what each of us designed and created for this project: <
 - Integrate everything <br/>
 ### Andy: <br/>
 - Interpolation of thermal camera data from 8x8 to 29x29 <br/>
+  ![No Interpolation](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/No%20interpolation.PNG)
 - Game mechanics: element boundaries and collision detection <br/>
 ### Lydia: <br/>
 - Stick Figure: heuristic head and arm detection from camera data <br/>
