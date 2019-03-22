@@ -14,6 +14,9 @@ struct Player{
 
 struct Player player;
 
+/*
+  Draw a stick figure by its components: head, torso, legs, and arms.
+ */
 void player_init();
 
 /*

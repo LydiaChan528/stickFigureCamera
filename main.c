@@ -24,7 +24,7 @@ void main(void)
   // gl_clear(THERMAL_BACKGROUND_COLOR);
   gl_init(CANVAS_SCREEN_SIZE, CANVAS_SCREEN_SIZE, GL_DOUBLEBUFFER);
   gl_clear(CANVAS_BACKGROUND_COLOR);
-  player_init();
+  // player_init();
   i2c_init();
 
   //storage for infraredData

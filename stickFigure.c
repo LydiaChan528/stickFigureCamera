@@ -71,12 +71,12 @@ static void stickFigure_buildBody(int base_length) {
 	player.rightArm = rightArmLine;
 }
 
-void player_init() {
-	struct Point origin = {gl_get_width()/2, gl_get_height()/2};
-	player.head = (struct Circle){origin, 10};
+// void player_init() {
+// 	struct Point origin = {gl_get_width()/2, gl_get_height()/2};
+// 	player.head = (struct Circle){origin, 10};
 
-	stickFigure_buildBody(1);
-}
+// 	stickFigure_buildBody(1);
+// }
 
 void stickFigure_init(struct Circle* personHead) {
 	//center the stickFigure by interpolation
@@ -93,7 +93,7 @@ void stickFigure_init(struct Circle* personHead) {
 }
 
 void drawStickFigure() {
-	printf("PLAYER: head (%d,%d) with rad=%d\n", player.head.center.x, player.head.center.y, player.head.radius);
+	// /*to test*/printf("PLAYER: head (%d,%d) with rad=%d\n", player.head.center.x, player.head.center.y, player.head.radius);
 
 	//draw head
 	drawCircle(player.head, CANVAS_DRAW_COLOR); 
