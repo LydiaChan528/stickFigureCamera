@@ -127,6 +127,8 @@ struct Circle* calculateHead(const short* data, int rowSize){
     }
   }
 
+  head->center = (struct Point){-1, -1};
+  // printf("dim %d, %d\n", gl_get_width(), gl_get_height());
   return head;
 }
 

@@ -1,6 +1,7 @@
 #include "glextra.h"
 #include "stickFigure.h"
 #include "math.h"
+#include "printf.h"
 
 #define THERMAL_SCREEN_SIZE 29
 #define CANVAS_BACKGROUND_COLOR GL_WHITE
@@ -17,28 +18,20 @@
 
 //struct Player player;
 
-void stickFigure_init(struct Circle* personHead, int screenSize) {
-	//center the stickFigure by interpolation
-	int base_length = 5; //radius, length that body is based on
 
-	//initialize player head
-	int figureHeadX = (screenSize * personHead->center.x / THERMAL_SCREEN_SIZE);
-	int figureHeadY = (2*screenSize/3 + (personHead->center.y - personHead->radius) + base_length);
-	struct Point figureHeadCenter = {figureHeadX, figureHeadY};
-	struct Circle figureHead = {figureHeadCenter, base_length};
-	player.head = figureHead;
 
+static void stickFigure_buildBody(int base_length) {
 	//initialize player torso and legs
 	//person's height changes based on length of torso
 	int leg_length = (2*base_length);
 	int leg_width = (base_length+1);
-	int torso_length = (screenSize - figureHeadY) - (3*base_length);
+	int torso_length = (gl_get_width() - player.head.center.y) - (3*base_length);
 	if (torso_length < 0) {
-		leg_length = ((screenSize - figureHeadY - base_length)/2);
-		torso_length = ((screenSize - figureHeadY - base_length) - leg_length);
+		leg_length = ((gl_get_width() - player.head.center.y - base_length)/2);
+		torso_length = ((gl_get_width() - player.head.center.y - base_length) - leg_length);
 	}
 
-	struct Point headTorso = {figureHeadCenter.x, figureHeadCenter.y + base_length};
+	struct Point headTorso = {player.head.center.x, player.head.center.y + base_length};
 	struct Point torsoLeg = {headTorso.x, headTorso.y + torso_length};
 
 	struct Point leftLegEnd = {torsoLeg.x - leg_width, torsoLeg.y + leg_length};
@@ -78,9 +71,32 @@ void stickFigure_init(struct Circle* personHead, int screenSize) {
 	player.rightArm = rightArmLine;
 }
 
+void player_init() {
+	struct Point origin = {gl_get_width()/2, gl_get_height()/2};
+	player.head = (struct Circle){origin, 10};
+
+	stickFigure_buildBody(1);
+}
+
+void stickFigure_init(struct Circle* personHead) {
+	//center the stickFigure by interpolation
+	int base_length = 5; //radius, length that body is based on
+
+	//initialize player head
+	int figureHeadX = (gl_get_width() * personHead->center.x / THERMAL_SCREEN_SIZE);
+	int figureHeadY = (2*gl_get_width()/3 + (personHead->center.y - personHead->radius) + base_length);
+	struct Point figureHeadCenter = {figureHeadX, figureHeadY};
+	struct Circle figureHead = {figureHeadCenter, base_length};
+	player.head = figureHead;
+
+	stickFigure_buildBody(base_length);
+}
+
 void drawStickFigure() {
+	printf("PLAYER: head (%d,%d) with rad=%d\n", player.head.center.x, player.head.center.y, player.head.radius);
+
 	//draw head
-	drawCircle(player.head, CANVAS_DRAW_COLOR);
+	drawCircle(player.head, CANVAS_DRAW_COLOR); 
 
 	//draw torso
 	drawLine(player.torso, CANVAS_DRAW_COLOR);

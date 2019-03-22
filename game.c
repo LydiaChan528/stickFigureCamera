@@ -1,8 +1,8 @@
 #include "game.h"
+#include "gl.h"
 #include "glextra.h"
 #include "stickFigure.h"
-#include "gl.h"
-#include <stdio.h>
+// #include <stdio.h>
 #include <stdlib.h>
 
 

@@ -10,7 +10,7 @@
 #include "game.h"
 
 #define THERMAL_SCREEN_SIZE 29
-#define THERMAL_BACKGROUND_COLOR GL_BLACK
+#define THERMAL_BACKGROUND_COLOR GL_BLUE
 
 #define CANVAS_SCREEN_SIZE 150
 #define CANVAS_BACKGROUND_COLOR GL_WHITE
@@ -24,6 +24,7 @@ void main(void)
   // gl_clear(THERMAL_BACKGROUND_COLOR);
   gl_init(CANVAS_SCREEN_SIZE, CANVAS_SCREEN_SIZE, GL_DOUBLEBUFFER);
   gl_clear(CANVAS_BACKGROUND_COLOR);
+  player_init();
   i2c_init();
 
   //storage for infraredData
@@ -40,11 +41,12 @@ void main(void)
     
     short* interpolatedData29 = malloc(sizeof(short)*29*29);
     interpolateSensorData(interpolatedData15,interpolatedData29,15,29);
+
+    // projectInfraredDataToMonitor(interpolatedData29,29);
     //[STICK FIGURE]
-    stickFigure_init(calculateHead(interpolatedData29, 29), CANVAS_SCREEN_SIZE);
+    stickFigure_init(calculateHead(interpolatedData29, 29));
     updatePlayerBounds();
     drawStickFigure();
-
 
     //[OBSTACLE]
     drawGamePieces();

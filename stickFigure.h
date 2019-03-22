@@ -14,6 +14,8 @@ struct Player{
 
 struct Player player;
 
+void player_init();
+
 /*
   Draw a stick figure by its components: head, torso, legs, and arms.
  */
@@ -24,10 +26,7 @@ void drawStickFigure();
   based on thermal camera inputs and head location.
 
   @param personHead   head location on which to base stick figure location
-  @param screenSize   size of frame that stick figure is drawn in
  */
-void updateStickFigure();
-
-void stickFigure_init(struct Circle* personHead, int screenSize);
+void stickFigure_init(struct Circle* personHead);
 
 #endif
