@@ -99,7 +99,7 @@ int hasCollided(){
 
 int hasRectangleCollided(struct Rectangle r1, struct Rectangle r2){
   //test if one rectangle is to the left of another(two is upperLeft, three is   //bottom right)
-  if(r1.two.x > r2.three.x || r1.three.x > r2.two.x){
+  if(r1.two.x > r2.three.x || r2.two.x > r1.three.x){
     return 0;
   }
   else if(r1.two.y < r2.three.y || r2.two.y < r1.three.y){
