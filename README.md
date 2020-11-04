@@ -22,26 +22,34 @@ Below is a breakdown of what each of us designed and created for this project:
   <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/gameOver.png" width="280">
   
  
-### Andy: 
+### Andy
+
 - Interpolation of thermal camera data from 8x8 to 29x29
 - Game mechanics: element boundaries and collision detection
 
-  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/No%20interpolation.PNG" height="200">
+  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/No%20interpolation.PNG" height="300">
   
-  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/15x15.PNG" height="200">
-<!--   <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/15x15.PNG" width="200">
+  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/15x15.PNG" height="300">
   
-<!--   <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/29x29.PNG" width="200"> --> -->
+  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/29x29.PNG" height="300">
 
-### Lydia: <br/>
-- Stick Figure: heuristic head and arm detection from camera data <br/>
-  ![Stick Figure](https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/stickFigureRendering.png)
-- Graphics: rendering lines, circles, and stick figure** <br/>
-  ![Arm Detection](https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/armDetection.png)
-  ![Thermal Camera Data for Head/Arm Detection, Case 1](images/headArmDetection.png)
-  ![Thermal Camera Data for Head/Arm Detection, Case 2](https://github.com/cs107e/AndyLKhuu-lchan528-project/blob/master/images/headArmDetection2.png)
+### Lydia
 
-Sources <br/>
-(*)We used the I2C driver in the CS107E library.<br/>
-(**)The circle-drawing algorithm is based the Mid-Point Circle Drawing Algorithm from GeeksforGeeks.<br/>
+- Stick Figure: heuristic head and arm detection from camera data
+  
+- Graphics: rendering lines, circles, and stick figure
+
+  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/stickFigureRendering.png" width="100">
+  
+  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/armDetection.png" width="100">
+  
+  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/headArmDetection.png" width="100">
+  
+  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/headArmDetection2.png" width="100">
+
+
+Sources
+* We used the I2C driver in the CS107E library.
+
+* The circle-drawing algorithm is based the Mid-Point Circle Drawing Algorithm from GeeksforGeeks.
 
