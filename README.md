@@ -39,13 +39,13 @@ Below is a breakdown of what each of us designed and created for this project:
   
 - Graphics: rendering lines, circles, and stick figure
 
-  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/stickFigureRendering.png" width="100">
+  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/stickFigureRendering.png" width="200">
   
-  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/armDetection.png" width="100">
+  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/armDetection.png" width="200">
   
-  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/headArmDetection.png" width="100">
+  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/headArmDetection.png" width="200">
   
-  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/headArmDetection2.png" width="100">
+  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/headArmDetection2.png" width="200">
 
 
 Sources
