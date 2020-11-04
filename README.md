@@ -16,17 +16,22 @@ Below is a breakdown of what each of us designed and created for this project:
 - Interface with thermal camera through I2C protocol
 - Implement motion and redrawing of game elements
 - Integrate all parts
-  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/gameInAction.png" width="50">
+
+  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/gameInAction.png" width="200">
   
-  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/gameOver.png" width="50">
+  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/gameOver.png" width="280">
   
  
 ### Andy: 
 - Interpolation of thermal camera data from 8x8 to 29x29
 - Game mechanics: element boundaries and collision detection
-  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/No%20interpolation.PNG" width="100">
-  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/15x15.PNG" width="200">
-  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/29x29.PNG" width="200">
+
+  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/No%20interpolation.PNG" height="200">
+  
+  <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/15x15.PNG" height="200">
+<!--   <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/15x15.PNG" width="200">
+  
+<!--   <img src="https://github.com/LydiaChan528/stickFigureCamera/blob/master/images/29x29.PNG" width="200"> --> -->
 
 ### Lydia: <br/>
 - Stick Figure: heuristic head and arm detection from camera data <br/>
